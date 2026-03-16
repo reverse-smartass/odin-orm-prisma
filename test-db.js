@@ -12,7 +12,6 @@ async function testConnection() {
   try {
     console.log("Attempting to connect to PostgreSQL...");
     
-    // This runs a simple query to get the current time from the DB server
     const res = await pool.query('SELECT NOW()');
     
     console.log("✅ Connection Successful!");
@@ -21,9 +20,10 @@ async function testConnection() {
     console.error("❌ Connection Failed!");
     console.error("Error Message:", err.message);
   } finally {
-    // Always close the pool in a script so it doesn't hang
     await pool.end();
   }
 }
 
 testConnection();
+
+export default pool;

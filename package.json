@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
- "scripts": {
+  "scripts": {
     "dev": "node --watch src/app.js",
     "commit": "git add . && git commit -m \"commit\" && git push",
     "start": "node src/app.js"
@@ -30,7 +30,15 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.5.0",
     "@prisma/client": "^7.5.0",
+    "@quixo3/prisma-session-store": "^3.1.19",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^17.3.1",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "express-validator": "^7.3.1",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
     "pg": "^8.20.0"
   }
 }
