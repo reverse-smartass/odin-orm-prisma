@@ -1,12 +1,15 @@
-import prisma from "./lib/prisma";
+import bcrypt from "bcryptjs";
+import prisma from "./lib/prisma.js";
 
 
 async function main() {
   // Create a new user with a post
+  const pword = await bcrypt.hash("randompassword", 10);
+  console.log(pword);
   const user = await prisma.user.create({
     data: {
       name: "Alice",
-      email: "alice@prisma.io",
+      email: "alice@prismo.nt",
       posts: {
         create: {
           title: "Hello World",
