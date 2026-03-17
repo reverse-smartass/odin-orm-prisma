@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+</head>
+<body>
+    <%- include('partials/header', { pages }) %>
+    <h1>hello world!</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="profile-pic">Choose a profile picture:</label>
+        <input type="file" id="profile-pic" name="avatar" accept="image/png, image/jpeg">
+        
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

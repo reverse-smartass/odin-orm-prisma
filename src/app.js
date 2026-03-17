@@ -8,7 +8,6 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import "dotenv/config";
 import prisma from "../lib/prisma";
-import pool from "../test-db";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
@@ -73,6 +72,23 @@ passport.deserializeUser(async (id, done) => {
     done(err);
   }
 });
+
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+
+  res.locals.pages = [
+    { name: "Home", path: "/" }
+  ];
+
+  res.locals.nonMemberPages = [
+     { name: "New User", path: "/sign-up" },
+  ];  
+
+  next();
+});
+
+app.use('/', indexRouter);
+app.use('/sign-up', signupRouter);
 
 app.get("/log-out", (req, res, next) => {
   req.logout((err) => {
